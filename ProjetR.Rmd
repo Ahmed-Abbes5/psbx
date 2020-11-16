@@ -1,0 +1,508 @@
+---
+output:
+  html_document: default
+  pdf_document: default
+---
+# PROJECT R
+# Code_R_1
+
+install.packages(“matrixcalc”) 
+
+# pour manipuler des matrices Un  ensemble de fonctions pour prendre en charge les calculs matriciels pour l'analyse probabiliste, économétrique et numérique
+```{r, echo=TRUE} 
+library(matrixcalc)
+version
+```
+
+
+ 
+```{r}
+rm(list =ls())  
+```
+
+# Pour nous assurer que nous disposons d’un environnement propre en R avant de soumettre le traitement par lot
+
+10*(1+1+1.5)
+```{r}
+rm(list =ls())  
+```
+
+# réaliser un calcul simple
+
+
+# ***- carre***
+```{r}
+10**2
+
+```
+
+
+# ***- racine***
+```{r}
+sqrt(100) 
+```
+
+
+
+# ***- puissance***
+
+```{r}
+100**(1/2) 
+```  
+
+  
+
+
+# ***- pi = 3.1416***
+```{r}
+pi
+```
+  
+  
+  
+# ***- cosinus***  
+```{r}
+cos(pi)  
+```
+
+
+
+# ***- sinus***
+
+```{r}
+sin(pi/2) 
+```
+
+# Ces fonctions donnent les fonctions trigonométriques évidentes. Ils calculent respectivement le cosinus, le sinus, la tangente, l'arc-cosinus, l'arc-sinus, l'arc-tangent et l'arc-tangent à deux arguments.
+
+# cospi(x), sinpi(x)Et tanpi(x), compute cos(pi*x), sin(pi*x)et tan(pi*x).
+
+
+#  ***- exponentielle***   
+
+```{r}
+exp(1) 
+```
+
+
+# ***- log neperien***
+
+```{r}
+log(1) 
+```
+
+# ***- arrondi à un entier***
+
+```{r}
+round(2.566) 
+```
+
+
+# ***- arrondi 2 chiffres apres***
+```{r}
+round(pi,2) 
+```
+
+
+# Pour créer un vecteur, on utilisera la fonction c la lettre c étant un raccourci du mot anglais combine puisque cette fonction permet de combiner des valeurs individuelles dans un vecteur unique
+
+
+# ***- un vector***
+```{r}
+v <- c(10,20,30) 
+```
+
+
+# ***- longueur du vector***
+```{r}
+length(v) 
+```
+
+# ***- sur chaque composante du vector***
+```{r}
+2*v+1 
+```
+
+# ***- carre de chaque composante***
+
+```{r}
+v**2 
+```
+
+# ***- log de chaque composante***
+```{r}
+log(v)
+```
+
+# ***- un autre vector***
+```{r}
+w <- c(1,2,3) 
+```
+
+# ***- soustraction membre a membre***
+```{r}
+v-w 
+```
+
+# ***- multiplication membre a membre***
+```{r}
+v*w 
+```
+
+
+# ***- division membre a membre***
+```{r}
+v/w
+```
+
+# ***- produit scalaire***
+```{r}
+v%*%w 
+```
+
+# ***- =somme***
+```{r}
+sum(v) 
+```
+
+# ***- moyenne***
+```{r}
+mean(v)
+```
+
+# ***- =minimum***
+```{r}
+min(v) 
+```
+
+# ***- =maximum***
+```{r}
+max(v)
+```
+
+# ***- =ecart type***
+```{r}
+sd(v)
+```
+
+# ***- =medianne***
+```{r}
+median(v)
+```
+
+
+# autres type de function : 
+# -	La fonction REP pour indiquer la valeur à répéter
+# -	La fonction SEQ pour un vecteur avec une suite de valeur 
+# - La fonction GLIMPSE ce qui signifie aperçu en anglais), qui permet de visualiser rapidement et de manière condensée le contenu d’un tableau de données.
+
+
+# ***- un autre vector u[2] #deuxieme composante***
+```{r}
+u <- c(1,2,3,4,5,6,7,8) 
+```
+
+# ***- nouveau vector***
+
+```{r}
+u[3:5] 
+```
+
+# ***- affectation une composante***
+```{r}
+u[8] <- 80 
+```
+
+# ***- affectation 5 composantes u***
+```{r}
+u[1:5] <- 1 
+```
+
+
+
+# ***- jeux avec les vectors***
+```{r}
+v <- c(10,20,30,30,60,50) 
+```
+
+
+
+# COMBINER DES VECTEURS 
+# Pour combiner des vecteurs, rien de plus simple. Il suffit d’utiliser ***c!*** Les valeurs des différents vecteurs seront mises bout à bout pour créer un unique vecteur.
+
+# ***- un autre vector***
+```{r}
+w <- c(20,10,31,31,61,51) 
+```
+
+# ***- un autre vector***
+```{r}
+u <- c(5 ,5 ,5 ,32,62,49) 
+```
+
+
+# str afficher de maniére compacte la structure d’un objet R
+ 
+# jeter un oeil sur les data n
+```{r}
+str(v) 
+```
+
+
+# Valeurs manquantes lorsqu’on travaille avec des données d’enquêtes, il est fréquent que certaines données soient manquantes, en raison d’un refus du participant de réponse à une question données ou d’un oubli ou d’un dysfonctionnement du matériel de mesure
+
+# ***- nb de valeurs manquantes***
+```{r}
+sum(is.na(v))
+```
+
+# ***- un vecteur avec 3 valeur manquantes***
+```{r}
+v_ <- c(NA,v,NA,NA)
+```
+
+# ***- nb valeurs manquantes***
+```{r}
+sum(is.na(v_)) 
+```
+
+# ***- min et max du vector***
+```{r}
+range(v)
+```
+
+# ***- min et max du vector ECHEC !***
+```{r}
+range(v_) 
+```
+
+
+
+# il ne faut pas confondre NA avec un autre objet qu’on rencontre sous R qui s’appelle NULL et représente l’objet vide. NULL ne contient absolument rien.
+# NA (Not Available) indique une valeur manquante
+
+# ***- sans tenir compte des NA***
+```{r}
+range(v_ , na.rm = TRUE)
+```
+
+# ***- quartiles de v***
+```{r}
+quantile(v) 
+```
+
+# ***- resume***
+```{r}
+quantile(v, probs =c(0,0.1,0.9,1))  # 80/20 0 summary(v) 
+```
+
+# ***- ecart type***
+```{r}
+sd(v, na.rm = TRUE) 
+```
+
+# ***- coeff correlation entre vectors***
+```{r}
+cor(v,w) 
+```
+
+# ***- vector tri ordre croissant***
+```{r}
+sort(v) 
+```
+
+
+# On peut trier par ordre décroissant en utilisant l’option decreasing=TRUE
+
+# ***- vector tri ordre decroissant***
+```{r}
+sort(v, decreasing = TRUE) 
+```
+
+
+# On peut trier selon plusieurs variables
+
+# ***- donne pointer tri sur elements***
+
+```{r}
+order(w) 
+```
+
+# ***- vecteur des rangs***
+```{r}
+rank(w, ties.method='min') 
+```
+
+# ***- vecteur des rangs***
+```{r}
+rank(w, ties.method='max')
+```
+
+# ***- valeurs max membre a membre***
+```{r}
+pmax(v,w,u) 
+```
+
+# ***- valeurs min membre a membre***
+```{r}
+pmin(v,w,u) 
+```
+
+# ***- sommes cumulees***
+```{r}
+cumsum(v) 
+```
+
+# ***- produits successifs***
+
+```{r}
+cumprod(v) 
+```
+
+# ***- maximum entre membre***
+```{r}
+cummax(w) 
+```
+
+# ***- idem avec min***
+```{r}
+cummin(w) 
+```
+
+
+
+
+# Logique Booléenne Dans R il est possible d’effectuer des comparaisons ou des tests qui vont sortir la valeur TRUE si vrai et FALSE si faux
+
+
+# Voici les opérateur que l’on peut utiliser :
+
+# 1) strictement supérieur
+# 2) <  strictement inférieur
+# 3) >=  supérieur ou égal
+# 4) <=  inférieur ou égal
+# 5) !=  différent
+# 6) == égal   ( oui il faut mettre == et pas =)
+
+
+# ***- TRUE***
+```{r}
+a<-1 
+b<-2
+(a==1)
+```
+
+# ***- FALSE***
+```{r}
+(a == b) 
+```
+
+# ***- TRUE***
+```{r}
+(a <= b)
+```
+
+
+```{r}
+A <- c(TRUE,TRUE,FALSE,FALSE) 
+B <- c(TRUE,FALSE,TRUE,FALSE) 
+```
+
+# Les connecteurs usuels nommés NON, ET, OU s'écrivent respectivement !, &, |. Il est très fortement conseillé d'utiliser des parenthèses pour séparer ces comparaisons logiques. Voici quelques exemples d'utilisation :
+
+# ***- Table de verite de “et”***
+```{r}
+A & B 
+```
+
+# ***- table de verite de “ou”***
+```{r}
+A | B
+```
+ 
+# ***- non-A***
+```{r}
+ ! A
+```
+
+# ***- table verite ou exclusif***
+```{r}
+xor(A,B) 
+```
+
+# ***- table de l’implication A==>B***
+```{r}
+!A|B 
+```
+
+# ***- vector compose de logical***
+```{r}
+str(A)
+```
+
+# ***- stocker le resultat d’un test***
+```{r}
+c <- (a > b)
+```
+
+# ***- un vector*** 
+```{r}
+v <- c(10,20,30,30,60,50)
+```
+
+# ***- vecteur resultant du test***
+```{r}
+t <- (v > 30)
+```
+
+# ***- membre a membre***
+```{r}
+t 
+```
+
+
+
+# ***- on ne garde que les membres avec expression TRUE***
+```{r}
+w <- v[(v>30)] 
+w #avec expression True 
+```
+
+
+# WHICH récupère ou définit un attribut c’est aussi pour la manipulation et la sélection de données
+
+# ***- trouve les indices ou membre egal a 30***
+```{r}
+which(v == 30) 
+```
+
+
+# ***- trouve les indices ou***
+```{r}
+which(v == max(v)) 
+```
+
+# ***- idem mais recherche min***
+```{r}
+which(v == min(v))
+```
+
+# ***- transformation en vecteur 1,0***
+```{r}
+s <- 1*t 
+s
+```
+
+# ***- un vector***
+```{r}
+v <- c(10,20,70,30,60,50) 
+all(v > 5) # ?toutes les val sont sup
+```
+
+# ***- ?une valeur inf a 5***
+```{r}
+any(v < 5) 
+```
+
+
+# *Merci pour votre attention*
