@@ -1,0 +1,42 @@
+
+import streamlit as st
+import pandas as pd
+from PIL import Image
+import numpy as np
+import plotly.express as px
+import matplotlib.pyplot as plt
+import matplotlib
+
+
+im = Image.open('Desktop/MSDPY.png')
+st.title('Dashboard Contrats MSD')
+st.image(im)
+
+
+
+df= pd.read_excel('Downloads/Data_1712.xlsx')
+df['Type RP / Catégorie']=df['Type RP / Catégorie'].fillna('Vide')
+
+
+fig = px.pie(df,values= df['Type'].value_counts() ,names=df['Type'].unique(),title='Camembert Type de contrats')
+st.plotly_chart(fig)
+
+fig1 = px.bar(df,x=df['Type RP / Catégorie'].unique(),y= df['Type RP / Catégorie'].value_counts(), title='Graphique de Types de RP')
+st.plotly_chart(fig1)
+
+
+
+
+
+
+df['Aire Thérapeutique']=df['Aire Thérapeutique'].fillna('inconnu') 
+df1=df.groupby('Aire Thérapeutique').agg('count') 
+df2=df1.transpose()
+listeR =df2.columns.tolist()
+choix_aire= st.multiselect("Aire",listeR)
+df3=df2[choix_aire]
+st.line_chart(df3,use_container_width=False)
+
+
+
+st.dataframe(df)
