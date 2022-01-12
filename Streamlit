@@ -52,3 +52,12 @@ filter_df = df[df['Aire Thérapeutique'].isin(choix_aire)]
 st.dataframe(filter_df)
 
 #filtre intéractif
+
+
+
+
+
+
+
+
+
